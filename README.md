@@ -308,8 +308,8 @@ Imagem gerada em `assets/screenshots/05-cronjob-jobs-automaticos.png`.
 Validar a identidade estavel dos Pods:
 
 ```bash
-kubectl get pods -n deploy-strategies-lab -l app.kubernetes.io/name=web-stateful -o wide
 kubectl get statefulset web-stateful -n deploy-strategies-lab
+kubectl get pods -n deploy-strategies-lab -l app.kubernetes.io/name=web-stateful -o wide
 ```
 
 Imagem gerada em `assets/screenshots/06-statefulset-pods-estaveis.png`.
@@ -322,25 +322,35 @@ Validar os PVCs criados pelos exemplos stateful:
 
 ```bash
 kubectl get pvc -n deploy-strategies-lab
-kubectl describe pvc -n deploy-strategies-lab
 ```
 
 Imagem gerada em `assets/screenshots/07-statefulset-pvcs.png`.
 
 ![PVCs criados pelos StatefulSets](assets/screenshots/07-statefulset-pvcs.png)
 
+Para aprofundar a inspecao:
+
+```bash
+kubectl describe pvc -n deploy-strategies-lab
+```
+
 ### Headless Service
 
 Validar o `Headless Service` com `clusterIP: None`:
 
 ```bash
-kubectl get svc web-headless -n deploy-strategies-lab
-kubectl describe svc web-headless -n deploy-strategies-lab
+kubectl get svc web-headless -n deploy-strategies-lab -o wide
 ```
 
 Imagem gerada em `assets/screenshots/08-headless-service-clusterip-none.png`.
 
 ![Headless Service web-headless com clusterIP None](assets/screenshots/08-headless-service-clusterip-none.png)
+
+Para aprofundar a inspecao:
+
+```bash
+kubectl describe svc web-headless -n deploy-strategies-lab
+```
 
 ### DNS Entre Pods
 
