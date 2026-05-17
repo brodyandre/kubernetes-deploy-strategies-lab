@@ -1,0 +1,10 @@
+# Base namespace for all resources in this Kubernetes lab.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: deploy-strategies-lab
+  labels:
+    app.kubernetes.io/name: kubernetes-deploy-strategies-lab
+    app.kubernetes.io/part-of: kubernetes-deploy-strategies-lab
+    app.kubernetes.io/managed-by: kubectl
+    environment: lab

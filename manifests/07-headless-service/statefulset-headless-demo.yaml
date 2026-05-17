@@ -1,0 +1,59 @@
+# StatefulSet used to demonstrate predictable Pod DNS names behind a Headless Service.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web-headless
+  namespace: deploy-strategies-lab
+  labels:
+    app.kubernetes.io/name: web-headless
+    app.kubernetes.io/part-of: kubernetes-deploy-strategies-lab
+    app.kubernetes.io/component: statefulset
+    app.kubernetes.io/managed-by: kubectl
+    environment: lab
+spec:
+  serviceName: web-headless
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-headless
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web-headless
+        app.kubernetes.io/part-of: kubernetes-deploy-strategies-lab
+        app.kubernetes.io/component: statefulset
+        environment: lab
+    spec:
+      containers:
+        - name: busybox-http
+          image: busybox:1.36
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /www
+              cat <<EOF > /www/index.html
+              <html>
+                <body>
+                  <h1>Headless Service Demo</h1>
+                  <p>Serving from Pod: ${POD_NAME}</p>
+                </body>
+              </html>
+              EOF
+              httpd -f -p 8080 -h /www
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 64Mi

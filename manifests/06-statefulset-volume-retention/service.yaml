@@ -1,0 +1,20 @@
+# Headless Service that provides stable DNS identities for the StatefulSet Pods.
+apiVersion: v1
+kind: Service
+metadata:
+  name: retention-demo
+  namespace: deploy-strategies-lab
+  labels:
+    app.kubernetes.io/name: retention-demo
+    app.kubernetes.io/part-of: kubernetes-deploy-strategies-lab
+    app.kubernetes.io/component: headless-service
+    app.kubernetes.io/managed-by: kubectl
+    environment: lab
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: retention-demo
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

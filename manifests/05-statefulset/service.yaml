@@ -1,0 +1,20 @@
+# Headless Service that provides stable DNS entries for the StatefulSet Pods.
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-stateful
+  namespace: deploy-strategies-lab
+  labels:
+    app.kubernetes.io/name: web-stateful
+    app.kubernetes.io/part-of: kubernetes-deploy-strategies-lab
+    app.kubernetes.io/component: headless-service
+    app.kubernetes.io/managed-by: kubectl
+    environment: lab
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: web-stateful
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

@@ -1,0 +1,31 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+tmp/
+
+# Python cache for local tooling
+__pycache__/
+.pytest_cache/
+.venv*/
+
+# Local environment files
+.env
+.env.*
+
+# Local Codex metadata
+.agents/
+.codex/
+
+# Kubernetes helper artifacts
+kubeconfig*
+*.bak
+
+# Shell output artifacts
+artifacts/
