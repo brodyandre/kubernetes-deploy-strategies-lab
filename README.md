@@ -224,7 +224,9 @@ kubectl apply -f manifests/07-headless-service/statefulset-headless-demo.yaml
 
 Depois de publicar no GitHub, capture a execucao real do workflow `Validate Kubernetes YAML` e salve o print em `assets/screenshots/10-github-actions-yaml-validation.png`.
 
-Observacao: esse print depende do `git push` e da execucao real do GitHub Actions, por isso nao foi gerado localmente junto com as evidencias do cluster.
+A execucao validada no GitHub Actions pode ser vista abaixo.
+
+![Workflow Validate Kubernetes YAML executando com sucesso no GitHub Actions](assets/screenshots/10-github-actions-yaml-validation.png)
 
 ## Como Validar os Recursos Criados ✅
 
