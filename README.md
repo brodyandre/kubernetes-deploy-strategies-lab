@@ -8,21 +8,21 @@
 
 Laboratório prático para estudar e demonstrar diferentes estratégias de deploy no Kubernetes, com foco em organização de manifests, execução local e documentação técnica voltada para portfólio profissional.
 
-## Acesso Rapido
+## Acesso Rápido
 
-| Area | Objetivo | Link |
+| Área | Objetivo | Link |
 |---|---|---|
-| Documentacao tecnica | Explicacoes conceituais, comandos `kubectl` e troubleshooting | [docs/README.md](docs/README.md) |
+| Documentação técnica | Explicações conceituais, comandos `kubectl` e troubleshooting | [docs/README.md](docs/README.md) |
 | Manifests | Estrutura dos exemplos por tema e ordem de estudo | [manifests/README.md](manifests/README.md) |
-| Scripts | Automacao para setup, aplicacao, validacao e limpeza | [scripts/README.md](scripts/README.md) |
-| Evidencias | Pasta sugerida para salvar prints reais do laboratorio | [assets/screenshots/](assets/screenshots/) |
-| Divulgacao profissional | Materiais prontos para publicacao no LinkedIn | [linkedin/README.md](linkedin/README.md) |
+| Scripts | Automação para setup, aplicação, validação e limpeza | [scripts/README.md](scripts/README.md) |
+| Evidências | Pasta sugerida para salvar prints reais do laboratório | [assets/screenshots/](assets/screenshots/) |
+| Divulgação profissional | Materiais prontos para publicação no LinkedIn | [linkedin/README.md](linkedin/README.md) |
 
 ## Sobre o Projeto
 
 Este repositório reúne exemplos objetivos e reproduzíveis de workloads do Kubernetes, organizados para estudo progressivo e apresentação técnica. A proposta é praticar cenários comuns de operação em ambiente local usando `kubectl`, `Docker Desktop`, `WSL2`, `k3d` ou `kind`, mantendo uma estrutura clara e atrativa para recrutadores.
 
-Se voce estiver avaliando este repositorio como portfolio, a melhor leitura e: `README.md` -> `docs/README.md` -> `manifests/` -> `assets/screenshots/`.
+Se você estiver avaliando este repositório como portfólio, a melhor leitura é: `README.md` -> `docs/README.md` -> `manifests/` -> `assets/screenshots/`.
 
 ## Objetivo Profissional 🎯
 
@@ -134,17 +134,17 @@ Antes de executar o laboratório, tenha o seguinte ambiente pronto:
 - Docker Desktop em execução
 - `kubectl` instalado e funcional
 - `k3d` ou `kind` instalado
-- `yamllint` instalado para validacao local dos arquivos YAML ou Docker disponivel para usar o fallback do script
+- `yamllint` instalado para validação local dos arquivos YAML ou Docker disponível para usar o fallback do script
 
-Instalacao opcional do `yamllint` local:
+Instalação opcional do `yamllint` local:
 
 ```bash
 pip install yamllint
 ```
 
-Se preferir, o script `./scripts/lint-yaml.sh` tambem consegue usar Docker automaticamente quando `yamllint` nao estiver instalado na maquina.
+Se preferir, o script `./scripts/lint-yaml.sh` também consegue usar Docker automaticamente quando `yamllint` não estiver instalado na máquina.
 
-Permissao recomendada para os scripts:
+Permissão recomendada para os scripts:
 
 ```bash
 chmod +x scripts/*.sh
@@ -174,9 +174,9 @@ kubectl cluster-info
 ./scripts/setup.sh
 ```
 
-Se quiser registrar a validacao completa do ambiente, consulte a captura gerada em `assets/screenshots/00-setup-environment-check.png`.
+Se quiser registrar a validação completa do ambiente, consulte a captura gerada em `assets/screenshots/00-setup-environment-check.png`.
 
-![Validacao inicial do ambiente no WSL2 com kubectl e Docker](assets/screenshots/00-setup-environment-check.png)
+![Validação inicial do ambiente no WSL2 com kubectl e Docker](assets/screenshots/00-setup-environment-check.png)
 
 Comando sugerido para registrar a disponibilidade do cluster:
 
@@ -222,15 +222,15 @@ kubectl apply -f manifests/07-headless-service/statefulset-headless-demo.yaml
 ./scripts/lint-yaml.sh
 ```
 
-Depois de publicar no GitHub, capture a execucao real do workflow `Validate Kubernetes YAML` e salve o print em `assets/screenshots/10-github-actions-yaml-validation.png`.
+Depois de publicar no GitHub, capture a execução real do workflow `Validate Kubernetes YAML` e salve o print em `assets/screenshots/10-github-actions-yaml-validation.png`.
 
-A execucao validada no GitHub Actions pode ser vista abaixo.
+A execução validada no GitHub Actions pode ser vista abaixo.
 
 ![Workflow Validate Kubernetes YAML executando com sucesso no GitHub Actions](assets/screenshots/10-github-actions-yaml-validation.png)
 
 ## Como Validar os Recursos Criados ✅
 
-### Visao Geral do Laboratorio
+### Visão Geral do Laboratório
 
 Verificar o namespace:
 
@@ -238,7 +238,7 @@ Verificar o namespace:
 kubectl get ns deploy-strategies-lab
 ```
 
-Verificar os Pods do laboratorio:
+Verificar os Pods do laboratório:
 
 ```bash
 kubectl get pods -n deploy-strategies-lab -o wide
@@ -246,7 +246,7 @@ kubectl get pods -n deploy-strategies-lab -o wide
 
 Imagem gerada em `assets/screenshots/02-kubectl-get-pods-wide.png`.
 
-![Pods do laboratorio no namespace deploy-strategies-lab](assets/screenshots/02-kubectl-get-pods-wide.png)
+![Pods do laboratório no namespace deploy-strategies-lab](assets/screenshots/02-kubectl-get-pods-wide.png)
 
 Verificar os workloads:
 
@@ -307,7 +307,7 @@ Imagem gerada em `assets/screenshots/05-cronjob-jobs-automaticos.png`.
 
 ### StatefulSet
 
-Validar a identidade estavel dos Pods:
+Validar a identidade estável dos Pods:
 
 ```bash
 kubectl get statefulset web-stateful -n deploy-strategies-lab
@@ -316,7 +316,7 @@ kubectl get pods -n deploy-strategies-lab -l app.kubernetes.io/name=web-stateful
 
 Imagem gerada em `assets/screenshots/06-statefulset-pods-estaveis.png`.
 
-![StatefulSet web-stateful com Pods ordenados e identidades estaveis](assets/screenshots/06-statefulset-pods-estaveis.png)
+![StatefulSet web-stateful com Pods ordenados e identidades estáveis](assets/screenshots/06-statefulset-pods-estaveis.png)
 
 ### Volumes Persistentes
 
@@ -330,7 +330,7 @@ Imagem gerada em `assets/screenshots/07-statefulset-pvcs.png`.
 
 ![PVCs criados pelos StatefulSets](assets/screenshots/07-statefulset-pvcs.png)
 
-Para aprofundar a inspecao:
+Para aprofundar a inspeção:
 
 ```bash
 kubectl describe pvc -n deploy-strategies-lab
@@ -348,7 +348,7 @@ Imagem gerada em `assets/screenshots/08-headless-service-clusterip-none.png`.
 
 ![Headless Service web-headless com clusterIP None](assets/screenshots/08-headless-service-clusterip-none.png)
 
-Para aprofundar a inspecao:
+Para aprofundar a inspeção:
 
 ```bash
 kubectl describe svc web-headless -n deploy-strategies-lab
@@ -356,7 +356,7 @@ kubectl describe svc web-headless -n deploy-strategies-lab
 
 ### DNS Entre Pods
 
-Testar a resolucao DNS do exemplo com `Headless Service`:
+Testar a resolução DNS do exemplo com `Headless Service`:
 
 ```bash
 kubectl exec -it web-headless-0 -n deploy-strategies-lab -- nslookup web-headless-1.web-headless.deploy-strategies-lab.svc.cluster.local
@@ -424,13 +424,13 @@ Este repositório foi pensado para comunicar habilidades técnicas de forma obje
 
 ## Como Ler Este Projeto no GitHub
 
-Se quiser uma visao rapida e objetiva do laboratorio:
+Se quiser uma visão rápida e objetiva do laboratório:
 
 1. Leia este `README` para entender o objetivo e a estrutura.
 2. Abra [docs/01-introducao.md](docs/01-introducao.md) para o contexto conceitual.
-3. Explore [manifests/README.md](manifests/README.md) para ver a progressao tecnica dos exemplos.
+3. Explore [manifests/README.md](manifests/README.md) para ver a progressão técnica dos exemplos.
 4. Consulte [scripts/README.md](scripts/README.md) para o fluxo operacional.
-5. Adicione os prints em [assets/screenshots/](assets/screenshots/) para reforcar a prova de execucao.
+5. Adicione os prints em [assets/screenshots/](assets/screenshots/) para reforçar a prova de execução.
 
 ## Observações do Ambiente
 
